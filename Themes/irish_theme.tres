@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dg68nple6rwnw"]
+
+[ext_resource type="FontFile" uid="uid://dg4rkcwhgnls" path="res://Assets/Fonts/KellsFLF.ttf" id="1_bioxf"]
+
+[resource]
+default_font = ExtResource("1_bioxf")
+default_font_size = 24

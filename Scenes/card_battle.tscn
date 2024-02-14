@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://q7mj5gr6wc6l"]
+
+[ext_resource type="Script" path="res://Scenes/card_battle.gd" id="1_6tjfp"]
+[ext_resource type="Texture2D" uid="uid://b86f6gp3l3olf" path="res://Assets/Card/wooden_table_top.png" id="1_rtarb"]
+[ext_resource type="Texture2D" uid="uid://dkufekcpamyop" path="res://Assets/Card/card_mat.jpeg" id="2_y34dw"]
+[ext_resource type="PackedScene" uid="uid://cel0ys50k4auc" path="res://Scenes/Card_Drop_Zone.tscn" id="4_oi3yd"]
+
+[node name="CardBattle" type="Node2D"]
+script = ExtResource("1_6tjfp")
+
+[node name="TableTop" type="Sprite2D" parent="."]
+scale = Vector2(2.00033, 1.53107)
+texture = ExtResource("1_rtarb")
+centered = false
+
+[node name="CardMat" type="Sprite2D" parent="TableTop"]
+position = Vector2(460.72, 411.955)
+scale = Vector2(1.03717, 0.348514)
+texture = ExtResource("2_y34dw")
+
+[node name="CardDropZone" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
+offset_left = -285.63
+offset_top = -190.65
+offset_right = -195.63
+offset_bottom = 209.35
+
+[node name="CardDropZone2" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
+offset_left = -177.661
+offset_top = -186.902
+offset_right = -90.6613
+offset_bottom = 214.098
+
+[node name="CardDropZone3" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
+offset_left = -67.2827
+offset_top = -181.28
+offset_right = 19.7173
+offset_bottom = 219.72
+
+[node name="CardDropZone4" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
+offset_left = 46.4699
+offset_top = -179.406
+offset_right = 133.47
+offset_bottom = 221.594
+
+[node name="CardDropZone5" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
+offset_left = 158.294
+offset_top = -175.657
+offset_right = 245.294
+offset_bottom = 225.343
+
+[node name="CardUI" type="CanvasLayer" parent="."]
+
+[node name="CardHand" type="HBoxContainer" parent="CardUI"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -958.0
+offset_top = -255.0
+offset_right = 959.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.00091, 0.713893)
