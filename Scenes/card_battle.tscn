@@ -1,66 +1,205 @@
-[gd_scene load_steps=5 format=3 uid="uid://q7mj5gr6wc6l"]
+[gd_scene load_steps=6 format=3 uid="uid://ddrf4sai6jkt3"]
 
-[ext_resource type="Script" path="res://Scenes/card_battle.gd" id="1_6tjfp"]
-[ext_resource type="Texture2D" uid="uid://b86f6gp3l3olf" path="res://Assets/Card/wooden_table_top.png" id="1_rtarb"]
-[ext_resource type="Texture2D" uid="uid://dkufekcpamyop" path="res://Assets/Card/card_mat.jpeg" id="2_y34dw"]
-[ext_resource type="PackedScene" uid="uid://cel0ys50k4auc" path="res://Scenes/Card_Drop_Zone.tscn" id="4_oi3yd"]
+[ext_resource type="Texture2D" uid="uid://b86f6gp3l3olf" path="res://Assets/Card/wooden_table_top.png" id="1_f3jpx"]
+[ext_resource type="Texture2D" uid="uid://d3xhxpfay364s" path="res://Assets/Card/blue_background.jpeg" id="2_7ox4l"]
+[ext_resource type="Texture2D" uid="uid://dkufekcpamyop" path="res://Assets/Card/card_mat.jpeg" id="2_15cps"]
+[ext_resource type="PackedScene" uid="uid://dwlvtn5waxxsl" path="res://Scenes/card_drop_zone.tscn" id="3_iech1"]
+[ext_resource type="PackedScene" uid="uid://y8sylg2owaq2" path="res://Scenes/picture_card.tscn" id="4_cv8k8"]
 
-[node name="CardBattle" type="Node2D"]
-script = ExtResource("1_6tjfp")
+[node name="CardGameArea" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
-[node name="TableTop" type="Sprite2D" parent="."]
-scale = Vector2(2.00033, 1.53107)
-texture = ExtResource("1_rtarb")
-centered = false
+[node name="TableTop" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1679.0
+offset_bottom = 778.0
+texture = ExtResource("1_f3jpx")
+expand_mode = 2
 
-[node name="CardMat" type="Sprite2D" parent="TableTop"]
-position = Vector2(460.72, 411.955)
-scale = Vector2(1.03717, 0.348514)
-texture = ExtResource("2_y34dw")
-
-[node name="CardDropZone" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
-offset_left = -285.63
-offset_top = -190.65
-offset_right = -195.63
-offset_bottom = 209.35
-
-[node name="CardDropZone2" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
-offset_left = -177.661
-offset_top = -186.902
-offset_right = -90.6613
-offset_bottom = 214.098
-
-[node name="CardDropZone3" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
-offset_left = -67.2827
-offset_top = -181.28
-offset_right = 19.7173
-offset_bottom = 219.72
-
-[node name="CardDropZone4" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
-offset_left = 46.4699
-offset_top = -179.406
-offset_right = 133.47
-offset_bottom = 221.594
-
-[node name="CardDropZone5" parent="TableTop/CardMat" instance=ExtResource("4_oi3yd")]
-offset_left = 158.294
-offset_top = -175.657
-offset_right = 245.294
-offset_bottom = 225.343
-
-[node name="CardUI" type="CanvasLayer" parent="."]
-
-[node name="CardHand" type="HBoxContainer" parent="CardUI"]
-unique_name_in_owner = true
+[node name="PlayerMat" type="TextureRect" parent="TableTop"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -958.0
-offset_top = -255.0
-offset_right = 959.0
-offset_bottom = 105.0
+offset_left = -800.0
+offset_top = -270.0
+offset_right = 800.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(1.00091, 0.713893)
+texture = ExtResource("2_15cps")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TableTop/PlayerMat"]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 270.0
+
+[node name="VerticalSpacer" type="Control" parent="TableTop/PlayerMat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardArea" type="HBoxContainer" parent="TableTop/PlayerMat/VBoxContainer"]
+layout_mode = 2
+
+[node name="DropZoneSpacer" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer2" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone2" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer3" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone3" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer4" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone4" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer5" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone5" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer6" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VerticalSpacer2" type="Control" parent="TableTop/PlayerMat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpponentMat" type="TextureRect" parent="TableTop"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -800.0
+offset_right = 800.0
+offset_bottom = 270.0
+grow_horizontal = 2
+texture = ExtResource("2_15cps")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TableTop/OpponentMat"]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 270.0
+
+[node name="VerticalSpacer" type="Control" parent="TableTop/OpponentMat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardArea" type="HBoxContainer" parent="TableTop/OpponentMat/VBoxContainer"]
+layout_mode = 2
+
+[node name="DropZoneSpacer" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer2" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone2" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer3" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone3" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer4" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone4" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer5" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card_Drop_Zone5" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+layout_mode = 2
+
+[node name="DropZoneSpacer6" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VerticalSpacer2" type="Control" parent="TableTop/OpponentMat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerHand" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -840.0
+offset_top = -270.0
+offset_right = 840.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_7ox4l")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHand"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PictureCard" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
+layout_mode = 2
+
+[node name="PictureCard2" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
+layout_mode = 2
+
+[node name="PictureCard3" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
+layout_mode = 2
+
+[node name="PictureCard4" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
+layout_mode = 2
+
+[node name="PictureCard5" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
+layout_mode = 2
+
+[node name="PictureCard6" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
+layout_mode = 2
+
+[node name="PictureCard7" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
+layout_mode = 2

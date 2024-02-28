@@ -1,77 +1,78 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgne3luqe8ld1"]
+[gd_scene load_steps=6 format=3 uid="uid://c1axpqt0dbu6j"]
 
-[ext_resource type="Texture2D" uid="uid://p4dad23w67q7" path="res://Assets/Card/card_background.jpeg" id="1_6jydd"]
-[ext_resource type="Script" path="res://Scenes/Word_Card.gd" id="1_irpws"]
-[ext_resource type="Theme" uid="uid://dg68nple6rwnw" path="res://Themes/irish_theme.tres" id="1_s7oe5"]
-[ext_resource type="Texture2D" uid="uid://duiu3wa4unrhp" path="res://Assets/Card/soundIconImg.png" id="3_e6fhv"]
+[ext_resource type="Texture2D" uid="uid://p4dad23w67q7" path="res://Assets/Card/card_background.jpeg" id="1_tr4pw"]
+[ext_resource type="Script" path="res://Scenes/word_card.gd" id="2_wph3r"]
+[ext_resource type="Theme" uid="uid://dg68nple6rwnw" path="res://Themes/irish_theme.tres" id="3_pvasb"]
+[ext_resource type="Texture2D" uid="uid://duiu3wa4unrhp" path="res://Assets/Card/soundIconImg.png" id="4_0agcs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm3s0"]
-size = Vector2(250, 300)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1edip"]
+size = Vector2(220, 250)
 
-[node name="WordCard" type="Control"]
-custom_minimum_size = Vector2(250, 300)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 250.0
-offset_bottom = 400.0
-pivot_offset = Vector2(125, 150)
-mouse_filter = 1
-theme = ExtResource("1_s7oe5")
-script = ExtResource("1_irpws")
+[node name="WordCard" type="TextureRect" groups=["cards"]]
+custom_minimum_size = Vector2(220, 250)
+offset_right = 220.0
+offset_bottom = 250.0
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_tr4pw")
+expand_mode = 1
+script = ExtResource("2_wph3r")
 
-[node name="CardBackground" type="NinePatchRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(125, 150)
-texture = ExtResource("1_6jydd")
-
-[node name="WordText" type="Label" parent="CardBackground"]
+[node name="CardArea2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+z_index = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardArea2D"]
+unique_name_in_owner = true
+position = Vector2(110, 125)
+shape = SubResource("RectangleShape2D_1edip")
+
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 120.0
-offset_right = 43.0
-offset_bottom = -109.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -44.5
+offset_right = 109.0
+offset_bottom = 44.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.856628, 1.21167)
+mouse_filter = 1
+theme = ExtResource("3_pvasb")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 47
-text = "Placeholder"
+theme_override_font_sizes/font_size = 40
+text = "Placeholder
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PronounceBtn" type="TextureButton" parent="CardBackground"]
+[node name="PronounceButton" type="TextureButton" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 176.0
-offset_top = 6.0
-offset_right = 497.0
-offset_bottom = 218.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.0910918, 0.175238)
-texture_normal = ExtResource("3_e6fhv")
+offset_left = -96.0
+offset_bottom = 63.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_0agcs")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="WordSound" type="AudioStreamPlayer2D" parent="CardBackground"]
+[node name="WordSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-z_index = 1
-position = Vector2(730, 767)
 
-[node name="Area2D" type="Area2D" parent="CardBackground"]
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CardBackground/Area2D"]
-position = Vector2(125, 150)
-shape = SubResource("RectangleShape2D_nm3s0")
-
-[connection signal="pressed" from="CardBackground/PronounceBtn" to="." method="_on_pronounce_btn_pressed"]
-[connection signal="input_event" from="CardBackground/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="CardArea2D" to="." method="_on_card_area_2d_input_event"]
+[connection signal="mouse_entered" from="CardArea2D" to="." method="_on_card_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CardArea2D" to="." method="_on_card_area_2d_mouse_exited"]
+[connection signal="pressed" from="PronounceButton" to="." method="_on_pronounce_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,366 @@
+[
+	{
+		"irishWord": "éan",
+		"power": 1,
+		"meanings": [
+			"bird"
+		]
+	},
+	{
+		"irishWord": "dubh",
+		"power": 1,
+		"meanings": [
+			"black"
+		]
+	},
+	{
+		"irishWord": "gorm",
+		"power": 1,
+		"meanings": [
+			"blue"
+		]
+	},
+	{
+		"irishWord": "leabhar",
+		"power": 1,
+		"meanings": [
+			"book"
+		]
+	},
+	{
+		"irishWord": "buachaill",
+		"power": 1,
+		"meanings": [
+			"boy"
+		]
+	},
+	{
+		"irishWord": "féileacán",
+		"power": 1,
+		"meanings": [
+			"butterfly"
+		]
+	},
+	{
+		"irishWord": "cathoir",
+		"power": 1,
+		"meanings": [
+			"chair"
+		]
+	},
+	{
+		"irishWord": "páistí",
+		"power": 1,
+		"meanings": [
+			"children"
+		]
+	},
+	{
+		"irishWord": "bó",
+		"power": 1,
+		"meanings": [
+			"cow"
+		]
+	},
+	{
+		"irishWord": "lá",
+		"power": 1,
+		"meanings": [
+			"day"
+		]
+	},
+	{
+		"irishWord": "fia",
+		"power": 1,
+		"meanings": [
+			"deer"
+		]
+	},
+	{
+		"irishWord": "madra",
+		"power": 1,
+		"meanings": [
+			"dog"
+		]
+	},
+	{
+		"irishWord": "doras",
+		"power": 1,
+		"meanings": [
+			"door"
+		]
+	},
+	{
+		"irishWord": "súil",
+		"power": 1,
+		"meanings": [
+			"eye"
+		]
+	},
+	{
+		"irishWord": "aghaidh",
+		"power": 1,
+		"meanings": [
+			"face"
+		]
+	},
+	{
+		"irishWord": "teachlach",
+		"power": 1,
+		"meanings": [
+			"family"
+		]
+	},
+	{
+		"irishWord": "cosa",
+		"power": 1,
+		"meanings": [
+			"feet"
+		]
+	},
+	{
+		"irishWord": "iasc",
+		"power": 1,
+		"meanings": [
+			"fish"
+		]
+	},
+	{
+		"irishWord": "cúig",
+		"power": 1,
+		"meanings": [
+			"five"
+		]
+	},
+	{
+		"irishWord": "bia",
+		"power": 1,
+		"meanings": [
+			"food"
+		]
+	},
+	{
+		"irishWord": "sionnach",
+		"power": 1,
+		"meanings": [
+			"fox"
+		]
+	},
+	{
+		"irishWord": "cailín",
+		"power": 1,
+		"meanings": [
+			"girl"
+		]
+	},
+	{
+		"irishWord": "glas",
+		"power": 1,
+		"meanings": [
+			"green"
+		]
+	},
+	{
+		"irishWord": "lámh",
+		"power": 1,
+		"meanings": [
+			"hand"
+		]
+	},
+	{
+		"irishWord": "ceann",
+		"power": 1,
+		"meanings": [
+			"head"
+		]
+	},
+	{
+		"irishWord": "teach",
+		"power": 1,
+		"meanings": [
+			"house"
+		]
+	},
+	{
+		"irishWord": "capall",
+		"power": 1,
+		"meanings": [
+			"horse"
+		]
+	},
+	{
+		"irishWord": "solas",
+		"power": 1,
+		"meanings": [
+			"light"
+		]
+	},
+	{
+		"irishWord": "fear",
+		"power": 1,
+		"meanings": [
+			"man"
+		]
+	},
+	{
+		"irishWord": "máthair",
+		"power": 1,
+		"meanings": [
+			"mother"
+		]
+	},
+	{
+		"irishWord": "sliabh",
+		"power": 1,
+		"meanings": [
+			"mountain"
+		]
+	},
+	{
+		"irishWord": "luch",
+		"power": 1,
+		"meanings": [
+			"mouse"
+		]
+	},
+	{
+		"irishWord": "oíche",
+		"power": 1,
+		"meanings": [
+			"night"
+		]
+	},
+	{
+		"irishWord": "uimhir",
+		"power": 1,
+		"meanings": [
+			"number"
+		]
+	},
+	{
+		"irishWord": "leathanach",
+		"power": 1,
+		"meanings": [
+			"page"
+		]
+	},
+	{
+		"irishWord": "daoine",
+		"power": 1,
+		"meanings": [
+			"people"
+		]
+	},
+	{
+		"irishWord": "pictiúr",
+		"power": 1,
+		"meanings": [
+			"picture"
+		]
+	},
+	{
+		"irishWord": "planda",
+		"power": 1,
+		"meanings": [
+			"plant"
+		]
+	},
+	{
+		"irishWord": "coinín",
+		"power": 1,
+		"meanings": [
+			"rabbit"
+		]
+	},
+	{
+		"irishWord": "dearg",
+		"power": 1,
+		"meanings": [
+			"red"
+		]
+	},
+	{
+		"irishWord": "abhainn",
+		"power": 1,
+		"meanings": [
+			"river"
+		]
+	},
+	{
+		"irishWord": "fuaim",
+		"power": 1,
+		"meanings": [
+			"sound"
+		]
+	},
+	{
+		"irishWord": "bord",
+		"power": 1,
+		"meanings": [
+			"table"
+		]
+	},
+	{
+		"irishWord": "am",
+		"power": 1,
+		"meanings": [
+			"time"
+		]
+	},
+	{
+		"irishWord": "crann",
+		"power": 1,
+		"meanings": [
+			"tree"
+		]
+	},
+	{
+		"irishWord": "fuinneog",
+		"power": 1,
+		"meanings": [
+			"window"
+		]
+	},
+	{
+		"irishWord": "uisce",
+		"power": 1,
+		"meanings": [
+			"water"
+		]
+	},
+	{
+		"irishWord": "bán",
+		"power": 1,
+		"meanings": [
+			"white"
+		]
+	},
+	{
+		"irishWord": "bean",
+		"power": 1,
+		"meanings": [
+			"woman"
+		]
+	},
+	{
+		"irishWord": "focal",
+		"power": 1,
+		"meanings": [
+			"word"
+		]
+	},
+	{
+		"irishWord": "bliain",
+		"power": 1,
+		"meanings": [
+			"year"
+		]
+	},
+	{
+		"irishWord": "buí",
+		"power": 1,
+		"meanings": [
+			"yellow"
+		]
+	}
+]

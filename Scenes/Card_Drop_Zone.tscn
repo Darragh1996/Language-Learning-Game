@@ -1,18 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://cel0ys50k4auc"]
+[gd_scene load_steps=3 format=3 uid="uid://dwlvtn5waxxsl"]
 
-[ext_resource type="Script" path="res://Scenes/Card_Drop_Zone.gd" id="1_irxho"]
+[ext_resource type="Script" path="res://Scenes/Card_Drop_Zone.gd" id="1_2s3qy"]
 
-[node name="CardDropZone" type="Control" groups=["card_zone"]]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 342.0
-offset_bottom = 480.0
-script = ExtResource("1_irxho")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu1um"]
+size = Vector2(220, 250)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Card_Drop_Zone" type="ColorRect" groups=["card_drop_zones"]]
+custom_minimum_size = Vector2(220, 250)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -125.0
+offset_right = 110.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
+color = Color(1, 1, 1, 0.678431)
+script = ExtResource("1_2s3qy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
+position = Vector2(110, 125)
+shape = SubResource("RectangleShape2D_eu1um")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://y8sylg2owaq2"]
+
+[ext_resource type="Texture2D" uid="uid://p4dad23w67q7" path="res://Assets/Card/card_background.jpeg" id="1_1egc4"]
+[ext_resource type="Script" path="res://Scenes/picture_card.gd" id="2_g0s3h"]
+[ext_resource type="Texture2D" uid="uid://mk0jr8r1vtfg" path="res://Assets/CardImages/am.png" id="2_swxp5"]
+[ext_resource type="Texture2D" uid="uid://duiu3wa4unrhp" path="res://Assets/Card/soundIconImg.png" id="3_bsurt"]
+[ext_resource type="Texture2D" uid="uid://bg0j5kjo3apyq" path="res://Assets/Card/damageCircle.png" id="5_8n72s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1edip"]
+size = Vector2(220, 250)
+
+[node name="PictureCard" type="TextureRect" groups=["cards"]]
+custom_minimum_size = Vector2(220, 250)
+offset_right = 220.0
+offset_bottom = 250.0
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_1egc4")
+expand_mode = 1
+script = ExtResource("2_g0s3h")
+
+[node name="CardArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardArea2D"]
+unique_name_in_owner = true
+position = Vector2(110, 125)
+shape = SubResource("RectangleShape2D_1edip")
+
+[node name="CardImage" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.28
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_swxp5")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="PronounceButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 63.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_bsurt")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WordSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+
+[node name="DamageLabel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 65.0
+offset_bottom = 62.0
+texture = ExtResource("5_8n72s")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="DamageLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true
+
+[connection signal="input_event" from="CardArea2D" to="." method="_on_card_area_2d_input_event"]
+[connection signal="mouse_entered" from="CardArea2D" to="." method="_on_card_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CardArea2D" to="." method="_on_card_area_2d_mouse_exited"]
+[connection signal="pressed" from="PronounceButton" to="." method="_on_pronounce_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
