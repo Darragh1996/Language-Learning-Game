@@ -1,6 +1,6 @@
 extends Control
 
-var isplayerCard : bool = true
+var isPlayerCard : bool = true
 var selected : bool = false
 var cards : Array
 var rest_point : Vector2 = global_position
@@ -17,22 +17,20 @@ func _ready() -> void:
 	else:
 		rest_point = global_position
 		
-func _draw() -> void:
-	var shape = %CollisionShape2D.shape
-	draw_rect(Rect2(%CollisionShape2D.position - shape.extents, shape.extents * 2), Color(1, 0, 0, 0.5), false)
+#func _draw() -> void:
+	#var shape = %CollisionShape2D.shape
+	#draw_rect(Rect2(%CollisionShape2D.position - shape.extents, shape.extents * 2), Color(1, 0, 0, 0.5), false)
 		
 func setCard(pos : Vector2 = global_position) -> void:
 	selected = false
 	z_index = 0
-	var parent : Object = get_parent()
 	rest_point = pos
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	
-func initialize_card(cardInfo : Array, isPlayerCard: bool) -> void:
-	self.isPlayerCard = isPlayerCard
-	word = cardInfo[0]
+func initialize_card(cardInfo : Dictionary, isPlayerCardFlag: bool) -> void:
+	isPlayerCard = isPlayerCardFlag
+	word = cardInfo.irishWord
 	var soundFile : String = str("res://Assets/Sounds/WordPronounciations/", word, ".ogg")
-	var imageFile : String = str("res://Assets/CardImages/", word, ".png")
 	%WordText.text = word
 	var wordSound : Object = load(soundFile)
 	%WordSound.stream = wordSound
@@ -48,7 +46,7 @@ func _process(delta: float) -> void:
 		global_position = lerp(global_position, rest_point, 50 * delta)
 		
 func setMonitoring(val : bool) -> void:
-	%Area2D.monitoring = val
+	%CardArea2D.monitoring = val
 	
 func _on_card_area_2d_mouse_entered() -> void:
 	%Timer.stop()
@@ -64,9 +62,8 @@ func _on_timer_timeout() -> void:
 func _on_pronounce_button_pressed() -> void:
 	%WordSound.play()
 
-func _on_card_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if Input.is_action_just_pressed("left_click") and isplayerCard:
-		print("click")
+func _on_card_area_2d_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
+	if Input.is_action_just_pressed("left_click") and isPlayerCard:
 		for card in cards:
 			card.selected = false
 			card.z_index = 0

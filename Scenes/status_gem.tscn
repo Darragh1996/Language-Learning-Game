@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ob6no10vfrd8"]
+
+[ext_resource type="Texture2D" uid="uid://133st2n8hgum" path="res://Assets/Card/gem.png" id="1_vj1j7"]
+[ext_resource type="Script" path="res://Scenes/status_gem.gd" id="2_6kt5k"]
+
+[node name="StatusGem" type="TextureRect" groups=["status_gem"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -392.0
+offset_top = -370.0
+offset_right = 632.0
+offset_bottom = 654.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.755859, 0.658203)
+texture = ExtResource("1_vj1j7")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("2_6kt5k")

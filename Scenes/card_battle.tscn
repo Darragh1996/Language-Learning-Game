@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddrf4sai6jkt3"]
+[gd_scene load_steps=7 format=3 uid="uid://ddrf4sai6jkt3"]
 
-[ext_resource type="Texture2D" uid="uid://b86f6gp3l3olf" path="res://Assets/Card/wooden_table_top.png" id="1_f3jpx"]
-[ext_resource type="Texture2D" uid="uid://d3xhxpfay364s" path="res://Assets/Card/blue_background.jpeg" id="2_7ox4l"]
-[ext_resource type="Texture2D" uid="uid://dkufekcpamyop" path="res://Assets/Card/card_mat.jpeg" id="2_15cps"]
-[ext_resource type="PackedScene" uid="uid://dwlvtn5waxxsl" path="res://Scenes/card_drop_zone.tscn" id="3_iech1"]
-[ext_resource type="PackedScene" uid="uid://y8sylg2owaq2" path="res://Scenes/picture_card.tscn" id="4_cv8k8"]
+[ext_resource type="Script" path="res://Scenes/card_battle.gd" id="1_5j12e"]
+[ext_resource type="Texture2D" uid="uid://b86f6gp3l3olf" path="res://Assets/Card/wooden_table_top.png" id="1_jr36p"]
+[ext_resource type="Texture2D" uid="uid://dkufekcpamyop" path="res://Assets/Card/card_mat.jpeg" id="2_qxt34"]
+[ext_resource type="PackedScene" uid="uid://dwlvtn5waxxsl" path="res://Scenes/card_drop_zone.tscn" id="3_wdhk1"]
+[ext_resource type="Texture2D" uid="uid://d3xhxpfay364s" path="res://Assets/Card/blue_background.jpeg" id="4_vxpk1"]
+[ext_resource type="PackedScene" uid="uid://ob6no10vfrd8" path="res://Scenes/status_gem.tscn" id="5_tqakv"]
 
-[node name="CardGameArea" type="Control"]
+[node name="CardBattle" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,12 +15,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_5j12e")
 
 [node name="TableTop" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1679.0
 offset_bottom = 778.0
-texture = ExtResource("1_f3jpx")
+texture = ExtResource("1_jr36p")
 expand_mode = 2
 
 [node name="PlayerMat" type="TextureRect" parent="TableTop"]
@@ -34,7 +36,7 @@ offset_top = -270.0
 offset_right = 800.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("2_15cps")
+texture = ExtResource("2_qxt34")
 expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TableTop/PlayerMat"]
@@ -53,35 +55,35 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone1" parent="TableTop/PlayerMat/VBoxContainer/CardArea" groups=["player_card_drop_zone"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer2" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone2" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone2" parent="TableTop/PlayerMat/VBoxContainer/CardArea" groups=["player_card_drop_zone"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer3" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone3" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone3" parent="TableTop/PlayerMat/VBoxContainer/CardArea" groups=["player_card_drop_zone"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer4" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone4" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone4" parent="TableTop/PlayerMat/VBoxContainer/CardArea" groups=["player_card_drop_zone"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer5" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone5" parent="TableTop/PlayerMat/VBoxContainer/CardArea" instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone5" parent="TableTop/PlayerMat/VBoxContainer/CardArea" groups=["player_card_drop_zone"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer6" type="Control" parent="TableTop/PlayerMat/VBoxContainer/CardArea"]
@@ -101,7 +103,7 @@ offset_left = -800.0
 offset_right = 800.0
 offset_bottom = 270.0
 grow_horizontal = 2
-texture = ExtResource("2_15cps")
+texture = ExtResource("2_qxt34")
 expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TableTop/OpponentMat"]
@@ -120,35 +122,35 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone1" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer2" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone2" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone2" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer3" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone3" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone3" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer4" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone4" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone4" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer5" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Card_Drop_Zone5" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_iech1")]
+[node name="Card_Drop_Zone5" parent="TableTop/OpponentMat/VBoxContainer/CardArea" groups=["opponent_card_drop_zones"] instance=ExtResource("3_wdhk1")]
 layout_mode = 2
 
 [node name="DropZoneSpacer6" type="Control" parent="TableTop/OpponentMat/VBoxContainer/CardArea"]
@@ -158,6 +160,63 @@ size_flags_horizontal = 3
 [node name="VerticalSpacer2" type="Control" parent="TableTop/OpponentMat/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="TableTop"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -39.5
+offset_right = 106.0
+offset_bottom = 39.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="GemContainer" type="HBoxContainer" parent="TableTop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -675.5
+offset_top = -67.0
+offset_right = 675.5
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusGem" parent="TableTop/GemContainer" instance=ExtResource("5_tqakv")]
+layout_mode = 2
+
+[node name="GemSpacer1" type="Control" parent="TableTop/GemContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusGem2" parent="TableTop/GemContainer" instance=ExtResource("5_tqakv")]
+layout_mode = 2
+
+[node name="GemSpacer2" type="Control" parent="TableTop/GemContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusGem3" parent="TableTop/GemContainer" instance=ExtResource("5_tqakv")]
+layout_mode = 2
+
+[node name="GemSpacer3" type="Control" parent="TableTop/GemContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusGem4" parent="TableTop/GemContainer" instance=ExtResource("5_tqakv")]
+layout_mode = 2
+
+[node name="GemSpacer4" type="Control" parent="TableTop/GemContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusGem5" parent="TableTop/GemContainer" instance=ExtResource("5_tqakv")]
+layout_mode = 2
 
 [node name="PlayerHand" type="TextureRect" parent="."]
 layout_mode = 1
@@ -171,10 +230,11 @@ offset_top = -270.0
 offset_right = 840.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("2_7ox4l")
+texture = ExtResource("4_vxpk1")
 expand_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHand"]
+[node name="CardContainer" type="HBoxContainer" parent="PlayerHand"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,23 +243,4 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="PictureCard" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
-layout_mode = 2
-
-[node name="PictureCard2" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
-layout_mode = 2
-
-[node name="PictureCard3" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
-layout_mode = 2
-
-[node name="PictureCard4" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
-layout_mode = 2
-
-[node name="PictureCard5" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
-layout_mode = 2
-
-[node name="PictureCard6" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
-layout_mode = 2
-
-[node name="PictureCard7" parent="PlayerHand/HBoxContainer" instance=ExtResource("4_cv8k8")]
-layout_mode = 2
+[connection signal="pressed" from="TableTop/PlayButton" to="." method="_on_play_button_pressed"]
