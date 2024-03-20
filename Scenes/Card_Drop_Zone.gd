@@ -6,9 +6,6 @@ var is_overlapping : bool = false
 var Card : Object
 
 func _ready() -> void:
-	#%CollisionShape2D.shape = %CollisionShape2D.shape.duplicate()
-	#%CollisionShape2D.shape.extents = size / 2
-	#%CollisionShape2D.position = size / 2
 	
 	if is_in_group("opponent_card_drop_zones"):
 		isPlayerDropZone = false
@@ -19,9 +16,6 @@ func _ready() -> void:
 			break
 		else:
 			vacant = true
-	
-	#if find_child("WordCard") == null:
-		#vacant = true
 		
 #func _draw() -> void:
 	#var shape = %CollisionShape2D.shape
