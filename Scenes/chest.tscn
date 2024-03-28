@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvuqoqgvrr85e"]
+
+[ext_resource type="Texture2D" uid="uid://cqwcr8h53wle3" path="res://Assets/SpriteSheets/Chest.png" id="1_32b16"]
+[ext_resource type="Script" path="res://Scenes/chest.gd" id="2_8pl8g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdxwo"]
+size = Vector2(16, 6)
+
+[sub_resource type="Animation" id="Animation_huosg"]
+resource_name = "open_chest"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_wi2kp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxdl0"]
+_data = {
+"RESET": SubResource("Animation_wi2kp"),
+"open_chest": SubResource("Animation_huosg")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sy22"]
+size = Vector2(16, 14)
+
+[node name="Chest" type="Sprite2D"]
+texture = ExtResource("1_32b16")
+hframes = 5
+vframes = 2
+region_rect = Rect2(96, 128, 16, 16)
+script = ExtResource("2_8pl8g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_xdxwo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hxdl0")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6sy22")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
