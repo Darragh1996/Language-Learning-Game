@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxrriqvl22thu"]
+
+[ext_resource type="Script" path="res://Scenes/new_card_message.gd" id="1_b5vec"]
+[ext_resource type="PackedScene" uid="uid://y8sylg2owaq2" path="res://Scenes/picture_card.tscn" id="2_se2hr"]
+
+[node name="NewCardMessage" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b5vec")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -506.5
+offset_top = -359.0
+offset_right = 506.5
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MessageHeading" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelSpacer1" type="Control" parent="VBoxContainer/MessageHeading"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MessageHeading"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 68
+text = "New Card Found!"
+
+[node name="LabelSpacer2" type="Control" parent="VBoxContainer/MessageHeading"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VerticalSpacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CardSpacer" type="Control" parent="VBoxContainer/CardContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PictureCard" parent="VBoxContainer/CardContainer" instance=ExtResource("2_se2hr")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CardSpacer2" type="Control" parent="VBoxContainer/CardContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VerticalSpacer2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WordMeaning" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="WordMeaningSpacer" type="Control" parent="VBoxContainer/WordMeaning"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MeaningLabel" type="Label" parent="VBoxContainer/WordMeaning"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+text = "Placeholder"
+
+[node name="WordMeaningSpacer2" type="Control" parent="VBoxContainer/WordMeaning"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

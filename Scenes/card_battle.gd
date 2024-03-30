@@ -10,7 +10,19 @@ func _ready() -> void:
 	var numCards : int = 5
 	var OppDropZones : Array = get_tree().get_nodes_in_group("opponent_card_drop_zones")
 	for i in range(numCards):
-		var CardInfo : Dictionary = WordDatabase[i]
+		#{
+		#"irishWord": "éan",
+		#"power": 1,
+		#"meanings": [
+			#"bird"
+		#]
+	#},
+		#var CardInfo : Dictionary = WordDatabase[i]
+		var CardInfo : Dictionary = {
+			"irishWord": DiscoveredWords.words[i][0],
+			"power": DiscoveredWords.words[i][1],
+			"meanings":DiscoveredWords.words[i][2]
+		}
 		var word_card_instance = wordCard.instantiate()
 		word_card_instance.initialize_card(CardInfo, true)
 		%CardContainer.add_child(word_card_instance)
@@ -20,11 +32,12 @@ func _ready() -> void:
 		OppDropZones[i].add_child(picture_card_instance)
 		
 func load_word_list():
-	var filePath : String = "res://Words/word_list.json"
-	var file = FileAccess.open(filePath, FileAccess.READ)
-	var content = file.get_as_text()
-	var json = JSON.parse_string(content)
-	return json
+	#var filePath : String = "res://Words/word_list.json"
+	#var file : FileAccess = FileAccess.open(filePath, FileAccess.READ)
+	#var content = file.get_as_text()
+	#var json = JSON.parse_string(content)
+	#return json
+	return DiscoveredWords.words
 
 
 func _on_play_button_pressed() -> void:

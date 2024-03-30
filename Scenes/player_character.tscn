@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqxtbattuo34y"]
+[gd_scene load_steps=12 format=3 uid="uid://bqxtbattuo34y"]
 
 [ext_resource type="Script" path="res://Scenes/player_character.gd" id="1_28w8j"]
 [ext_resource type="Texture2D" uid="uid://dlpflfn35tjwr" path="res://Assets/SpriteSheets/Chris Walk.png" id="2_hgr0l"]
@@ -116,6 +116,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmnua"]
 size = Vector2(6, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2emo"]
+size = Vector2(10, 5)
+
 [node name="PlayerCharacter" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_28w8j")
@@ -139,3 +142,11 @@ shape = SubResource("RectangleShape2D_jmnua")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_i2emo")
+debug_color = Color(0.92549, 0.207843, 0.458824, 0.419608)

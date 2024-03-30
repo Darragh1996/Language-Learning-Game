@@ -7,12 +7,16 @@ func get_input():
 	velocity = input_direction * speed
 	if Input.is_action_just_pressed("move_left"):
 		%AnimationPlayer.play("walk_left")
+		$InteractionArea.rotation = 90
 	elif Input.is_action_pressed("move_right"):
 		%AnimationPlayer.play("walk_right")
+		$InteractionArea.rotation = -90
 	elif Input.is_action_just_pressed("move_up"):
 		%AnimationPlayer.play("walk_backward")
+		$InteractionArea.rotation = 180
 	elif Input.is_action_just_pressed("move_down"):
 		%AnimationPlayer.play("walk_forward")
+		$InteractionArea.rotation = 0
 		
 	
 func _physics_process(delta: float) -> void:

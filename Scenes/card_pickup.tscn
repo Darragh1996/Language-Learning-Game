@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp4fnipm36iae"]
+
+[ext_resource type="Script" path="res://Scenes/card_pickup.gd" id="1_c7gnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u62gm"]
+size = Vector2(121.691, 6.3222)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7w6fw"]
+
+[node name="CardPickup" type="Area2D"]
+rotation = 0.349066
+script = ExtResource("1_c7gnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.25338e-07, 3.71307e-09)
+scale = Vector2(0.036509, 0.969049)
+shape = SubResource("RectangleShape2D_u62gm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.98023e-08, 2.98023e-08)
+scale = Vector2(5.00915, 5.54448)
+texture = SubResource("CanvasTexture_7w6fw")
