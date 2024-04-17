@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxebya3yw0jbq"]
+
+[ext_resource type="Script" path="res://Scenes/dialog_box.gd" id="1_fwlya"]
+[ext_resource type="Theme" uid="uid://dg68nple6rwnw" path="res://Themes/irish_theme.tres" id="1_r64f8"]
+
+[node name="DialogBox" type="MarginContainer"]
+offset_right = 44.0
+offset_bottom = 42.0
+script = ExtResource("1_fwlya")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_r64f8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1
+
+[node name="CharacterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CharacterDisplayTimer" to="." method="_on_character_display_timer_timeout"]

@@ -56,7 +56,7 @@ enum {
 	Buí
 }
 
-const WORDS = {
+var WORDS = {
 	Éan: ["éan", 1, ["bird"]],
 	Dubh: ["dubh", 1, ["black"]],
 	Gorm: ["gorm", 1, ["blue"]],
