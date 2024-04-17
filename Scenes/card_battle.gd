@@ -5,10 +5,12 @@ var pictureCard = preload("res://Scenes/picture_card.tscn")
 var gems : Array
 
 func _ready() -> void:
+	randomize()
 	gems = get_tree().get_nodes_in_group("status_gem")
 	var WordDatabase : Array = load_word_list()
 	var numCards : int = 5
 	var OppDropZones : Array = get_tree().get_nodes_in_group("opponent_card_drop_zones")
+	var handCards : Array = []
 	for i in range(numCards):
 		#{
 		#"irishWord": "éan",
@@ -19,17 +21,23 @@ func _ready() -> void:
 	#},
 		#var CardInfo : Dictionary = WordDatabase[i]
 		var CardInfo : Dictionary = {
-			"irishWord": DiscoveredWords.words[i][0],
-			"power": DiscoveredWords.words[i][1],
-			"meanings":DiscoveredWords.words[i][2]
+			"irishWord": WordList.discoveredWords[i][0],
+			"power": WordList.discoveredWords[i][1],
+			"meanings":WordList.discoveredWords[i][2]
 		}
-		var word_card_instance = wordCard.instantiate()
-		word_card_instance.initialize_card(CardInfo, true)
-		%CardContainer.add_child(word_card_instance)
+		handCards.append(CardInfo)
 		
 		var picture_card_instance = pictureCard.instantiate()
 		picture_card_instance.initialize_card(CardInfo, false)
 		OppDropZones[i].add_child(picture_card_instance)
+		
+	handCards.shuffle()
+	
+	for i in range(len(handCards)):
+		var word_card_instance = wordCard.instantiate()
+		word_card_instance.initialize_card(handCards[i], true)
+		%CardContainer.add_child(word_card_instance)
+		
 		
 func load_word_list():
 	#var filePath : String = "res://Words/word_list.json"

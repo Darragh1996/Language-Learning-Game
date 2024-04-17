@@ -108,11 +108,17 @@ const WORDS = {
 	Bean: ["bean", 1, ["woman"]],
 	Focal: ["focal", 1, ["word"]],
 	Bliain: ["bliain", 1, ["year"]],
-	Buí: ["buí", 1, ["yellow"]]
+	Buí: ["buí", 1, ["yellow"]],
 }
+
+var discoveredWords : Array = []
 
 func get_random() -> Array:
 	var size : int = WORDS.size()
 	var random_key : int = WORDS.keys()[randi() % size]
 	var word = WORDS[random_key]
+	WORDS.erase(random_key)
 	return word
+
+func add_word(newWord: Array) -> void:
+	discoveredWords.append(newWord)

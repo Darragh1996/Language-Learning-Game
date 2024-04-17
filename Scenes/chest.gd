@@ -6,9 +6,6 @@ var random_card_data : Array
 
 func _ready() -> void:
 	random_card_data = WordList.get_random()
-	
-	while random_card_data in DiscoveredWords.words:
-		random_card_data = WordList.get_random()
 
 func open() -> void:
 	$Area2D.input_pickable = false

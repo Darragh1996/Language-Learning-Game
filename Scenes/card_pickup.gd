@@ -23,9 +23,9 @@ func set_card_data(card_data: Array) -> void:
 	self.card_data = card_data
 
 func _on_area_entered(area_that_entered: Area2D) -> void:
-	await DiscoveredWords.add_word(card_data)
+	await WordList.add_word(card_data)
 	queue_free()
-	print(DiscoveredWords.words)
+	print(WordList.discoveredWords)
 	_display_message()
 
 func _display_message() -> void:
