@@ -5,13 +5,14 @@ var player_is_present: bool = false
 const lines: Array[String] = [
 	"test...",
 	"I can talk now!",
-	"blah blah blah"
+	"blah blah blah",
+	"I want a {{madra}}"
 ]
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and player_is_present:
 		#open()
-		print("npc")
+		#print("npc")
 		#$Area2D.monitoring = false
 		DialogManager.start_dialog(global_position, lines)
 

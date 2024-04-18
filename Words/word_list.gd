@@ -122,3 +122,9 @@ func get_random() -> Array:
 
 func add_word(newWord: Array) -> void:
 	discoveredWords.append(newWord)
+
+func get_word(targetWord: String) -> Array:
+	for val in WORDS.values():
+		if val[0] == targetWord:
+			return val
+	return []
