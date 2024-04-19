@@ -24,8 +24,6 @@ func display_text(text_to_display: String):
 	
 	var regexResults = regex.search_all(text_to_display)
 	for el in regexResults:
-		#print(el)
-		
 		if el.get_string(2) != "":
 			text = el.get_string(2)
 			label = Label.new()
@@ -38,8 +36,8 @@ func display_text(text_to_display: String):
 			
 			if size.x > MAX_WIDTH:
 				label.autowrap_mode = TextServer.AUTOWRAP_WORD
-				await resized 
-				await resized
+				await resized # wait for x resize
+				await resized # wait for y resize
 				custom_minimum_size.y = size.y
 				
 			global_position.x -= size.x / 2
@@ -49,13 +47,9 @@ func display_text(text_to_display: String):
 			curr_node = label
 			await _display_character()
 		elif el.get_string(1) != "":
-			#print(el.get_string(1))
-			#print("print:" + el.get_string(1))
 			var button = Button.new()
-			#text = el.get_string(1)
 			$MarginContainer/HBoxContainer.add_child(button)
 			curr_node = button
-			#await _display_character()
 			
 			button.text = el.get_string(1)
 			button.pressed.connect(_on_button_pressed.bind(WordList.get_word(el.get_string(1))))
