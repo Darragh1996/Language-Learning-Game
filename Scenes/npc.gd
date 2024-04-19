@@ -6,7 +6,7 @@ const lines: Array[String] = [
 	"test...",
 	"I can talk now!",
 	"blah blah blah",
-	"I want a {{madra}}"
+	"I want a {{féileacán}}"
 ]
 
 func _input(event: InputEvent) -> void:

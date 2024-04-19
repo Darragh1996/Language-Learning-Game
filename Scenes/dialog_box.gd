@@ -1,6 +1,7 @@
 extends MarginContainer
 
 #@onready var label = $MarginContainer/Label
+var dictionary_message : PackedScene = preload("res://Scenes/word_meaning_display.tscn")
 @onready var timer = $CharacterDisplayTimer
 var label
 
@@ -60,7 +61,15 @@ func display_text(text_to_display: String):
 			button.pressed.connect(_on_button_pressed.bind(WordList.get_word(el.get_string(1))))
 
 func _on_button_pressed(wordInfo: Array) -> void:
-	print(wordInfo[0])
+	print(wordInfo[2][0])
+	var dict_instance = dictionary_message.instantiate()
+	
+	var camera: Camera2D = get_viewport().get_camera_2d()
+	var center_position = camera.get_screen_center_position()
+	get_tree().root.get_node("World").add_child.call_deferred(dict_instance)
+	dict_instance.global_position = center_position
+	dict_instance.scale = Vector2(0.2, 0.2)
+	dict_instance.set_meaning_display(wordInfo)
 
 func _display_character():
 	label.text += text[char_index]
