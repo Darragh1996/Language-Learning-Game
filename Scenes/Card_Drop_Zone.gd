@@ -13,23 +13,39 @@ func _ready() -> void:
 	for child in get_children():
 		if child.is_in_group("cards"):
 			vacant = false
+			#print(child)
+			Card = child
 			break
 		else:
+			#print(child)
 			vacant = true
-		
+
 #func _draw() -> void:
 	#var shape = %CollisionShape2D.shape
 	#draw_rect(Rect2(%CollisionShape2D.position - shape.extents, shape.extents * 2), Color(1, 0, 0, 0.5), false)
 
+func reset() -> void:
+	if Card != null:
+		#print(Card.word)
+		
+		Card.queue_free()
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	is_overlapping = true
-	Card = area.get_parent()
-		
+	if vacant == true and isPlayerDropZone:
+		Card = area.get_parent()
+
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	is_overlapping = false
+	if vacant == true and isPlayerDropZone:
+		Card = null
 
 func _on_child_entered_tree(node: Node) -> void:
+	print("child entered tree")
+	print(node)
 	if node.is_in_group("cards"):
+		Card = node
+		#if node.is_in_group("cards"):
 		vacant = false
 
 func _on_child_exiting_tree(node: Node) -> void:

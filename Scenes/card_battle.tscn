@@ -243,4 +243,9 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="pressed" from="TableTop/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

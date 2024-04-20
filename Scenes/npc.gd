@@ -6,14 +6,11 @@ const lines: Array[String] = [
 	"test...",
 	"I can talk now!",
 	"blah blah blah",
-	"I want a {{féileacán}}"
+	"I want a {{madra}}"
 ]
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and player_is_present:
-		#open()
-		#print("npc")
-		#$Area2D.monitoring = false
 		DialogManager.start_dialog(global_position, lines)
 
 

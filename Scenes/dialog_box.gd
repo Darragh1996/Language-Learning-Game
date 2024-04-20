@@ -30,7 +30,6 @@ func display_text(text_to_display: String):
 			label.modulate = Color(0, 0, 0, 1)
 			$MarginContainer/HBoxContainer.add_child(label)
 			label.text = text_to_display
-			
 			await resized
 			custom_minimum_size.x = min(size.x, MAX_WIDTH)
 			
@@ -50,7 +49,6 @@ func display_text(text_to_display: String):
 			var button = Button.new()
 			$MarginContainer/HBoxContainer.add_child(button)
 			curr_node = button
-			
 			button.text = el.get_string(1)
 			button.pressed.connect(_on_button_pressed.bind(WordList.get_word(el.get_string(1))))
 

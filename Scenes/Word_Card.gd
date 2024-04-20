@@ -63,6 +63,7 @@ func _on_pronounce_button_pressed() -> void:
 	%WordSound.play()
 
 func _on_card_area_2d_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
+	cards = get_tree().get_nodes_in_group("cards")
 	if Input.is_action_just_pressed("left_click") and isPlayerCard:
 		for card in cards:
 			card.selected = false

@@ -3,14 +3,27 @@ extends Control
 var wordCard = preload("res://Scenes/word_card.tscn")
 var pictureCard = preload("res://Scenes/picture_card.tscn")
 var gems : Array
+var numCards : int = 5
+#var handCards : Array = []
+@onready var OppDropZones : Array = get_tree().get_nodes_in_group("opponent_card_drop_zones")
+@onready var playerDropZones : Array = get_tree().get_nodes_in_group("player_card_drop_zone")
 
 func _ready() -> void:
 	randomize()
 	gems = get_tree().get_nodes_in_group("status_gem")
-	var WordDatabase : Array = load_word_list()
-	var numCards : int = 5
-	var OppDropZones : Array = get_tree().get_nodes_in_group("opponent_card_drop_zones")
+	#var WordDatabase : Array = load_word_list()
+	
+	
+	set_up_game()
+	
+
+func set_up_game() -> void:
 	var handCards : Array = []
+	
+	
+	for dropZone in playerDropZones:
+		dropZone.reset()
+	
 	for i in range(numCards):
 		#{
 		#"irishWord": "éan",
@@ -37,8 +50,7 @@ func _ready() -> void:
 		var word_card_instance = wordCard.instantiate()
 		word_card_instance.initialize_card(handCards[i], true)
 		%CardContainer.add_child(word_card_instance)
-		
-		
+
 func load_word_list():
 	#var filePath : String = "res://Words/word_list.json"
 	#var file : FileAccess = FileAccess.open(filePath, FileAccess.READ)
@@ -49,7 +61,7 @@ func load_word_list():
 
 
 func _on_play_button_pressed() -> void:
-	var playerDropZones : Array = get_tree().get_nodes_in_group("player_card_drop_zone")
+	#var playerDropZones : Array = get_tree().get_nodes_in_group("player_card_drop_zone")
 	var opponentDropZones : Array = get_tree().get_nodes_in_group("opponent_card_drop_zones")
 	
 	for i in opponentDropZones.size():
@@ -70,6 +82,15 @@ func _on_play_button_pressed() -> void:
 									gems[i].setStatus("correct")
 								else:
 									gems[i].setStatus("incorrect")
-									
+	
 	for gem in gems:
+		gem.changeColour()
+	
+	$Timer.start()
+
+
+func _on_timer_timeout() -> void:
+	set_up_game()
+	for gem in gems:
+		gem.setStatus("")
 		gem.changeColour()
