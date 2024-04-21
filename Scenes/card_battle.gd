@@ -20,8 +20,10 @@ func _ready() -> void:
 func set_up_game() -> void:
 	var handCards : Array = []
 	
-	
 	for dropZone in playerDropZones:
+		dropZone.reset()
+		
+	for dropZone in OppDropZones:
 		dropZone.reset()
 	
 	for i in range(numCards):
@@ -38,10 +40,12 @@ func set_up_game() -> void:
 			"power": WordList.discoveredWords[i][1],
 			"meanings":WordList.discoveredWords[i][2]
 		}
+		#print(CardInfo)
 		handCards.append(CardInfo)
 		
 		var picture_card_instance = pictureCard.instantiate()
 		picture_card_instance.initialize_card(CardInfo, false)
+		#print(CardInfo)
 		OppDropZones[i].add_child(picture_card_instance)
 		
 	handCards.shuffle()
@@ -71,17 +75,23 @@ func _on_play_button_pressed() -> void:
 			for child in opponentDropZones[i].get_children():
 				if child.is_in_group("cards"):
 					opponentCardVal = child.word
+					#print(opponentCardVal)
 					
 					if playerDropZones[i].vacant:
 						gems[i].setStatus("incorrect")
+						WordList.update_word_damage(opponentCardVal, 1)
 					else:
 						for child_p in playerDropZones[i].get_children():
 							if child_p.is_in_group("cards"):
 								playerCardVal = child_p.word
 								if playerCardVal == opponentCardVal:
 									gems[i].setStatus("correct")
+									WordList.update_word_damage(opponentCardVal, -1)
 								else:
 									gems[i].setStatus("incorrect")
+									WordList.update_word_damage(opponentCardVal, 1)
+					#print(opponentCardVal)
+					#print(WordList.get_discovered_word(opponentCardVal))
 	
 	for gem in gems:
 		gem.changeColour()

@@ -25,9 +25,15 @@ func _ready() -> void:
 	#draw_rect(Rect2(%CollisionShape2D.position - shape.extents, shape.extents * 2), Color(1, 0, 0, 0.5), false)
 
 func reset() -> void:
+	#if isPlayerDropZone == false and Card != null:
+		#print(Card.word)
+		#print("clearning opp drop zone")
 	if Card != null:
 		#print(Card.word)
-		
+		if isPlayerDropZone:
+			vacant = true
+		else:
+			vacant = false
 		Card.queue_free()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -41,15 +47,18 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 		Card = null
 
 func _on_child_entered_tree(node: Node) -> void:
-	print("child entered tree")
-	print(node)
+	#print("child entered tree")
+	#print(node)
+	if node.is_in_group("cards") and not isPlayerDropZone:
+		#print("child entered opponenent drop zone")
+		vacant = false
 	if node.is_in_group("cards"):
 		Card = node
 		#if node.is_in_group("cards"):
 		vacant = false
 
 func _on_child_exiting_tree(node: Node) -> void:
-	if node.is_in_group("cards"):
+	if node.is_in_group("cards") and isPlayerDropZone:
 		vacant = true
 
 func _on_area_2d_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:

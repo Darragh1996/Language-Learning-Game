@@ -9,6 +9,6 @@ func _input(event: InputEvent) -> void:
 		queue_free()
 
 func set_message_card(card_details: Array):
-	var cd : Dictionary = {"irishWord": card_details[0]}
+	var cd : Dictionary = {"irishWord": card_details[0], "power": 1}
 	%PictureCard.initialize_card(cd, false)
 	%MeaningLabel.text = card_details[0] + " / " + card_details[2][0]

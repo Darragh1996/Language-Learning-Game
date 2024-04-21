@@ -128,3 +128,18 @@ func get_word(targetWord: String) -> Array:
 		if val[0] == targetWord:
 			return val
 	return []
+
+func get_discovered_word(targetWord: String) -> Array:
+	for word in discoveredWords:
+		if word[0] == targetWord:
+			return word
+	return []
+
+func update_word_damage(targetWord: String, val: int) -> void:
+	for word in discoveredWords:
+		if word[0] == targetWord:
+			word[1] += val
+			if word[1] <= 0:
+				word[1] = 1
+			elif word[1] > 9:
+				word[1] = 9

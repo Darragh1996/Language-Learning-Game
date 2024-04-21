@@ -6,6 +6,7 @@ var cards : Array
 var rest_point : Vector2 = global_position
 var collisionShape : Object
 var word : String = "placeholder"
+var power
 var spotlight : bool = false # keeps track of whether the card should be spotlighted
 var is_played : bool = false
 
@@ -29,12 +30,14 @@ func setCard(pos : Vector2 = global_position) -> void:
 func initialize_card(cardInfo : Dictionary, isPlayerCardFlag: bool) -> void:
 	isPlayerCard = isPlayerCardFlag
 	word = cardInfo.irishWord
+	power = cardInfo.power
 	var soundFile : String = str("res://Assets/Sounds/WordPronounciations/", word, ".ogg")
 	var imageFilePath : String = str("res://Assets/CardImages/", word, ".png")
 	var image = load(imageFilePath)
 	%CardImage.texture = image
 	var wordSound : Object = load(soundFile)
 	%WordSound.stream = wordSound
+	$DamageLabel/Label.text = str(power)
 
 func _on_pronounce_button_pressed() -> void:
 	%WordSound.play()
