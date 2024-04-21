@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 WordList="*res://Words/word_list.gd"
 DiscoveredWords="*res://Words/discovered_words.gd"
 DialogManager="*res://Singletons/DialogManager.gd"
+PlayerData="*res://Singletons/PlayerData.gd"
 
 [display]
 
