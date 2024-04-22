@@ -14,9 +14,9 @@ func _input(event: InputEvent) -> void:
 		DialogManager.start_dialog(global_position, lines)
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	player_is_present = true
 
 
-func _on_area_2d_area_exited(area: Area2D) -> void:
+func _on_area_2d_area_exited(_area: Area2D) -> void:
 	player_is_present = false

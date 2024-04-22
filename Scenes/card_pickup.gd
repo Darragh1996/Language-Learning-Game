@@ -19,11 +19,11 @@ func play_floating_animation() -> void:
 	tween.tween_property(sprite_2d, "position", -1.0 * position_offset, duration)
 	tween.set_loops()
 
-func set_card_data(card_data: Array) -> void:
-	self.card_data = card_data
+func set_card_data(card_data_flag: Array) -> void:
+	card_data = card_data_flag
 
-func _on_area_entered(area_that_entered: Area2D) -> void:
-	await WordList.add_word(card_data)
+func _on_area_entered(_area_that_entered: Area2D) -> void:
+	WordList.add_word(card_data)
 	queue_free()
 	#print(WordList.discoveredWords)
 	_display_message()

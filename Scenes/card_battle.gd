@@ -5,6 +5,7 @@ var pictureCard = preload("res://Scenes/picture_card.tscn")
 var gems : Array
 var numCards : int = 5
 var damageTaken : int
+var world_scene : PackedScene = preload("res://Scenes/world.tscn")
 #var handCards : Array = []
 @onready var OppDropZones : Array = get_tree().get_nodes_in_group("opponent_card_drop_zones")
 @onready var playerDropZones : Array = get_tree().get_nodes_in_group("player_card_drop_zone")
@@ -96,9 +97,12 @@ func _on_play_button_pressed() -> void:
 									damageTaken += child.power
 					#print(opponentCardVal)
 					#print(WordList.get_discovered_word(opponentCardVal))
-	print(damageTaken)
 	PlayerData.take_damage(damageTaken)
-	%PlayerHealthDisplay.text = "HP: " + str(PlayerData.get_health())
+	if PlayerData.get_health() > 0:
+		%PlayerHealthDisplay.text = "HP: " + str(PlayerData.get_health())
+	else:
+		print("Game Over")
+		get_tree().change_scene_to_file("res://Scenes/world.tscn")
 	
 	for gem in gems:
 		gem.changeColour()

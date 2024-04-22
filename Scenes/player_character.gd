@@ -19,7 +19,7 @@ func get_input():
 		$InteractionArea.rotation = 0
 		
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if velocity == Vector2.ZERO:
 		%AnimationPlayer.stop()
 	get_input()

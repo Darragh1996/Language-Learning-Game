@@ -14,6 +14,7 @@ func changeColour() -> void:
 		targetColor = Color(0.988, 0, 0.035)
 	else:
 		targetColor = Color(1, 1, 1)
-		
+	
 	tween = create_tween()
-	tween.tween_property(self, "modulate", targetColor, 1.0)
+	if tween:
+		tween.tween_property(self, "modulate", targetColor, 1.0)
