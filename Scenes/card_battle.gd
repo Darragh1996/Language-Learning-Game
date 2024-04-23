@@ -102,7 +102,8 @@ func _on_play_button_pressed() -> void:
 		%PlayerHealthDisplay.text = "HP: " + str(PlayerData.get_health())
 	else:
 		print("Game Over")
-		get_tree().change_scene_to_file("res://Scenes/world.tscn")
+		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
+		return # prevent any other code from executing before the scene transition takes place
 	
 	for gem in gems:
 		gem.changeColour()
