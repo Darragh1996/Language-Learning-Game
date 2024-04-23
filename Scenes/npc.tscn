@@ -49,5 +49,9 @@ position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_aifsf")
 debug_color = Color(0.835294, 0.243137, 0.752941, 0.419608)
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

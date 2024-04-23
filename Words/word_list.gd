@@ -121,11 +121,15 @@ func get_random() -> Array:
 	return word
 
 func compare_words(a, b) -> bool:
+	# first sorts cards in order of times 
+	# encounterd in ascending order
 	if a[3] < b[3]:
 		return true
 	elif a[3] > b[3]:
 		return false
-		
+	
+	# then sorts cards in order of power
+	# in descedning order
 	if a[1] > b[1]:
 		return true
 	elif a[1] > b[1]:

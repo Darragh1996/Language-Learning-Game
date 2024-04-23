@@ -7,6 +7,7 @@ var numCards : int = 5
 var damageTaken : int
 var world_scene : PackedScene = preload("res://Scenes/world.tscn")
 #var handCards : Array = []
+var got_all_right = true
 @onready var OppDropZones : Array = get_tree().get_nodes_in_group("opponent_card_drop_zones")
 @onready var playerDropZones : Array = get_tree().get_nodes_in_group("player_card_drop_zone")
 
@@ -70,6 +71,7 @@ func load_word_list():
 func _on_play_button_pressed() -> void:
 	#var playerDropZones : Array = get_tree().get_nodes_in_group("player_card_drop_zone")
 	var opponentDropZones : Array = get_tree().get_nodes_in_group("opponent_card_drop_zones")
+	got_all_right = true
 	damageTaken = 0
 	for i in opponentDropZones.size():
 		var opponentCardVal : String
@@ -84,6 +86,7 @@ func _on_play_button_pressed() -> void:
 						gems[i].setStatus("incorrect")
 						WordList.update_word_damage(opponentCardVal, 1)
 						damageTaken += child.power
+						got_all_right = false
 					else:
 						for child_p in playerDropZones[i].get_children():
 							if child_p.is_in_group("cards"):
@@ -95,6 +98,7 @@ func _on_play_button_pressed() -> void:
 									gems[i].setStatus("incorrect")
 									WordList.update_word_damage(opponentCardVal, 1)
 									damageTaken += child.power
+									got_all_right = false
 					#print(opponentCardVal)
 					#print(WordList.get_discovered_word(opponentCardVal))
 	PlayerData.take_damage(damageTaken)
@@ -110,9 +114,15 @@ func _on_play_button_pressed() -> void:
 	
 	$Timer.start()
 
-
 func _on_timer_timeout() -> void:
-	set_up_game()
-	for gem in gems:
-		gem.setStatus("")
-		gem.changeColour()
+	if got_all_right:
+		$Timer2.start()
+	else:
+		set_up_game()
+		for gem in gems:
+			gem.setStatus("")
+			gem.changeColour()
+
+
+func _on_timer_2_timeout() -> void:
+	get_tree().change_scene_to_file("res://Scenes/world.tscn")

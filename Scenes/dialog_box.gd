@@ -53,7 +53,7 @@ func display_text(text_to_display: String):
 			button.pressed.connect(_on_button_pressed.bind(WordList.get_word(el.get_string(1))))
 
 func _on_button_pressed(wordInfo: Array) -> void:
-	print(wordInfo[2][0])
+	#print(wordInfo[2][0])
 	var dict_instance = dictionary_message.instantiate()
 	
 	var camera: Camera2D = get_viewport().get_camera_2d()

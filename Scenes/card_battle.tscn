@@ -280,5 +280,10 @@ alignment = 1
 wait_time = 3.0
 one_shot = true
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="pressed" from="TableTop/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
