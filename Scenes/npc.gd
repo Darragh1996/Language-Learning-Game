@@ -4,6 +4,7 @@ var player_is_present: bool = false
 
 const lines: Array[String] = [
 	"Hello!",
+	"Have you seen a {{madra}}",
 	"If you want to battle me...",
 	"You'll need at least 5 cards"
 ]
