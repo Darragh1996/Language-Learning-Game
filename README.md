@@ -4,7 +4,7 @@ It is part of my final year dissertation project - "The Role of User Experience 
 ## Project set-up
 
 # Install Godot Engine
-To install the Godot game engine, go to the site: https://godotengine.org/download/macos/ and download the latest stable version for your target platform.
+To install the Godot game engine, go to the site: https://godotengine.org/download/ and download the latest stable version for your target platform.
 
 # Clone this repository to your machine
 Using your chosen method install this repository's files onto your machine.
